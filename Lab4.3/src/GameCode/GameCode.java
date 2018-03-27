@@ -22,7 +22,8 @@ public class GameCode extends Application {
  
             @Override
             public void handle(ActionEvent event) {
-            	int clickscore = 0;
+            	int clickscore;
+            	clickscore = 1;
             	
                 System.out.println("Click Score: " + clickscore);
             }
