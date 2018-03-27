@@ -22,14 +22,15 @@ public class GameCode extends Application {
  
             @Override
             public void handle(ActionEvent event) {
-            	int clickscore
-                System.out.println("Hello World!");
+            	int clickscore = 0;
+            	
+                System.out.println("Click Score: " + clickscore);
             }
         });
         
         StackPane root = new StackPane();
         root.getChildren().add(btn);
-        primaryStage.setScene(new Scene(root, 300, 250));
+        primaryStage.setScene(new Scene(root, 1080, 720));
         primaryStage.show();
     }
 }
