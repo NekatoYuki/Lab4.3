@@ -1,8 +1,4 @@
-
-
-
-
-
+package GameCode;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
