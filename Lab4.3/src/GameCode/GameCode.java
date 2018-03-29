@@ -15,7 +15,7 @@ public class GameCode extends Application {
     
     @Override
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("Hello World!");
+        primaryStage.setTitle("Button Clicker");
         Button btn = new Button();
         btn.setText("Clicker");
         btn.setOnAction(new EventHandler<ActionEvent>() {
