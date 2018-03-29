@@ -22,16 +22,45 @@ public class GameCode extends Application {
  
             @Override
             public void handle(ActionEvent event) {
-            	int clickscore;
-            	clickscore = 1;
-            	
-                System.out.println("Click Score: " + clickscore);
+            	if(scoring)
+            	{
+            		int score = 1;
+            		score++;
+            	}
+            	else
+            	{
+            		score--;
+            	}
             }
         });
+        
+        timeStep = System.nanoTime() + 1000000000L;
+        new AnimationTimer()
+        {
+        	public void handle(long now)
+        	{
+        		if (now > timeStep)
+        		{
+        			timeStep = now + 1000000000L;
+        			scoring = !scoring;
+        		}
+        		else if (!scoring)
+        		{
+        			btn.setText("Do Not Click");
+        		}
+        		else
+        		{
+        			btn.setText("Click!");
+        		}
+        		txt.setTest("Score: " + Integer.toString(score));
+        	}
+        }.start();
+        
         
         StackPane root = new StackPane();
         root.getChildren().add(btn);
         primaryStage.setScene(new Scene(root, 1920, 1080));
         primaryStage.show();
+    
     }
 }
