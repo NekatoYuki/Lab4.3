@@ -31,7 +31,7 @@ public class GameCode extends Application {
         
         StackPane root = new StackPane();
         root.getChildren().add(btn);
-        primaryStage.setScene(new Scene(root, 1080, 720));
+        primaryStage.setScene(new Scene(root, 1920, 1080));
         primaryStage.show();
     }
 }
