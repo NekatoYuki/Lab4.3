@@ -7,8 +7,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
- 
-public class GameCode extends Application {
+
+public class GameCode extends Application{
+private static int score;
+private static boolean scoring;
+
     public static void main(String[] args) {
         launch(args);
     }

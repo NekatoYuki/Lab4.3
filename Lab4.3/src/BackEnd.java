@@ -7,10 +7,15 @@ import java.nio.file.Path;
 import java.nio.file.Paths; 
 import java.util.ArrayList; 
 import java.util.List; 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.PrintWriter;
+
 
 public class BackEnd {
-
-	public static void main(String[] args) 
+	String fileName = "HighScores.txt";
+	public static void getHighScores() 
 	{
 		List<HighScore> highScore = readHighScoresFromCSV("HighScores.txt");
 		for (HighScore x : highScore)
@@ -48,6 +53,23 @@ public class BackEnd {
 		return list1;
 	}
 	
+	public void writer(int score) 
+	{
+		PrintWriter writer = null;
+		int counter = 0;
+		
+		try 
+		{
+			writer = new PrintWriter(fileName);
+		} 
+		catch (FileNotFoundException e) 
+		{
+			e.printStackTrace();
+		}
+		
+		writer.println(score);
+		writer.close();
+	}
 	public static class HighScore
 	{
 		private static int yourScore;
