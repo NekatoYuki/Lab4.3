@@ -1,6 +1,7 @@
 package GameCode;
 
 import javafx.application.Application;
+import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -9,14 +10,15 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class GameCode extends Application{
-private static int score;
-private static boolean scoring;
 
     public static void main(String[] args) {
         launch(args);
     }
     
-    @Override
+    private int score = 0;
+    private boolean scoring = true;
+    private long timeStep;
+
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Button Clicker");
         Button btn = new Button();
@@ -27,17 +29,13 @@ private static boolean scoring;
             public void handle(ActionEvent event) {
             	if(scoring)
             	{
-            		int score = 1;
             		score++;
-            	}
-            	else
-            	{
-            		score--;
             	}
             }
         });
         
         timeStep = System.nanoTime() + 1000000000L;
+        
         new AnimationTimer()
         {
         	public void handle(long now)
@@ -47,9 +45,10 @@ private static boolean scoring;
         			timeStep = now + 1000000000L;
         			scoring = !scoring;
         		}
-        		else if (!scoring)
+        		if (!scoring)
         		{
         			btn.setText("Do Not Click");
+        			score = 0;
         		}
         		else
         		{
