@@ -37,7 +37,7 @@ public class GameCode extends Application{
             }
         });
         
-        timeStep = System.nanoTime() + 1000000000L;
+        timeStep = System.nanoTime() + 10000000000L;
         
         new AnimationTimer()
         {
@@ -45,13 +45,14 @@ public class GameCode extends Application{
         	{
         		if (now > timeStep)
         		{
-        			timeStep = now + 1000000000L;
+        			score = 0;
+        			timeStep = now + 10000000000L;
         			scoring = !scoring;
         		}
         		if (!scoring)
         		{
-        			btn.setText("Do Not Click");
-        			score = 0;
+        			btn.setText("Times Up!!!");
+        			txt.setText("Score: " + Integer.toString(score));
         		}
         		else
         		{
