@@ -14,7 +14,8 @@ import java.io.PrintWriter;
 
 
 public class BackEnd {
-	String fileName = "HighScores.txt";
+	private static String fileName = "HighScores.txt";
+	
 	public static void getHighScores() 
 	{
 		List<HighScore> highScore = readHighScoresFromCSV("HighScores.txt");
@@ -53,10 +54,9 @@ public class BackEnd {
 		return list1;
 	}
 	
-	public void writer(int score) 
+	public static void writer(int score) 
 	{
 		PrintWriter writer = null;
-		int counter = 0;
 		
 		try 
 		{
@@ -70,26 +70,5 @@ public class BackEnd {
 		writer.println(score);
 		writer.close();
 	}
-	public static class HighScore
-	{
-		private static int yourScore;
-
-		public HighScore(int yourScore)
-		{
-			this.yourScore = yourScore;
-		}
-		public static int getYourScore() 
-		{
-			return yourScore;
-		}
-
-		public static void setYourScore(int yourScore) {
-			HighScore.yourScore = yourScore;
-		}
-		
-		public String toString() {
-			return "HighScore [ " + HighScore.getYourScore() + " ]";
-		}
-		
-	}
+	
 }

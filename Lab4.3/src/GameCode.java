@@ -1,4 +1,4 @@
-package GameCode;
+
 
 import javafx.application.Application;
 import javafx.animation.AnimationTimer;
@@ -26,6 +26,27 @@ public class GameCode extends Application{
         Button btn = new Button();
         btn.setText("Clicker");
         Text txt = new Text(10, 0, "Click Score:");
+        Button showScore = new Button();
+        showScore.setText("Show Score");
+        Button start = new Button();
+        start.setText("Start");
+        showScore.setOnAction(new EventHandler<ActionEvent>() 
+        {
+        	public void handle(ActionEvent event)
+        	{
+        		BackEnd.getHighScores();
+        	}
+        });
+        
+        start.setOnAction(new EventHandler<ActionEvent>() 
+        {
+        	public void handle(ActionEvent event)
+        	{
+        		scoring=true;
+        		
+        	}
+        });
+        
         btn.setOnAction(new EventHandler<ActionEvent>() {
  
             @Override
@@ -33,6 +54,7 @@ public class GameCode extends Application{
             	if(scoring)
             	{
             		score++;
+            		BackEnd.writer(score);
             	}
             }
         });
@@ -51,6 +73,8 @@ public class GameCode extends Application{
         		if (!scoring)
         		{
         			btn.setText("Times Up!!!");
+        			
+        			score = 0;
         		}
         		else
         		{
@@ -64,6 +88,10 @@ public class GameCode extends Application{
         StackPane root = new StackPane();
         root.getChildren().add(btn);
         root.getChildren().add(txt);
+        root.getChildren().add(showScore);
+        root.getChildren().add(start);
+        StackPane.setAlignment(start,Pos.CENTER_LEFT);
+        StackPane.setAlignment(showScore, Pos.TOP_LEFT);
         StackPane.setAlignment(txt,Pos.TOP_RIGHT);
         primaryStage.setScene(new Scene(root, 1080, 720));
         primaryStage.show();
