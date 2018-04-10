@@ -45,14 +45,12 @@ public class GameCode extends Application{
         	{
         		if (now > timeStep)
         		{
-        			score = 0;
         			timeStep = now + 10000000000L;
         			scoring = !scoring;
         		}
         		if (!scoring)
         		{
         			btn.setText("Times Up!!!");
-        			txt.setText("Score: " + Integer.toString(score));
         		}
         		else
         		{
@@ -66,7 +64,7 @@ public class GameCode extends Application{
         StackPane root = new StackPane();
         root.getChildren().add(btn);
         root.getChildren().add(txt);
-        root.setAlignment(txt,Pos.TOP_RIGHT);
+        StackPane.setAlignment(txt,Pos.TOP_RIGHT);
         primaryStage.setScene(new Scene(root, 1080, 720));
         primaryStage.show();
     
