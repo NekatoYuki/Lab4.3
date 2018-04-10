@@ -4,10 +4,12 @@ import javafx.application.Application;
 import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.scene.text.Text;
 
 public class GameCode extends Application{
 
@@ -23,6 +25,7 @@ public class GameCode extends Application{
         primaryStage.setTitle("Button Clicker");
         Button btn = new Button();
         btn.setText("Clicker");
+        Text txt = new Text(10, 0, "Click Score:");
         btn.setOnAction(new EventHandler<ActionEvent>() {
  
             @Override
@@ -54,14 +57,16 @@ public class GameCode extends Application{
         		{
         			btn.setText("Click!");
         		}
-        		txt.setTest("Score: " + Integer.toString(score));
+        		txt.setText("Score: " + Integer.toString(score));
         	}
         }.start();
         
         
         StackPane root = new StackPane();
         root.getChildren().add(btn);
-        primaryStage.setScene(new Scene(root, 1920, 1080));
+        root.getChildren().add(txt);
+        root.setAlignment(txt,Pos.TOP_RIGHT);
+        primaryStage.setScene(new Scene(root, 1080, 720));
         primaryStage.show();
     
     }
